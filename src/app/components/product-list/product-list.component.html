@@ -1,0 +1,51 @@
+<mat-toolbar>
+  <h1>Lista de productos</h1>
+  <span class="app-spacer"></span>
+  <button mat-icon-button>
+      <mat-icon (click)="addProduct()" class="app-add-button">add_circle</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource">
+
+    <!-- nombre Column -->
+    <ng-container matColumnDef="nombre">
+      <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+      <mat-cell *matCellDef="let product"> {{product.nombre}} </mat-cell>
+    </ng-container>
+
+    <!-- descripcion Column -->
+    <ng-container matColumnDef="descripcion">
+      <mat-header-cell *matHeaderCellDef> Descripcion </mat-header-cell>
+      <mat-cell *matCellDef="let product"> {{product.descripcion}} </mat-cell>
+    </ng-container>
+
+    <!-- estado Column -->
+    <ng-container matColumnDef="estado">
+      <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
+      <mat-cell *matCellDef="let product">
+        <div *ngIf="product.estado;else content">
+          <mat-icon >check_circle</mat-icon>
+        </div>
+        <ng-template #content>
+          <mat-icon>highlight_off</mat-icon>
+        </ng-template>
+
+      </mat-cell>
+    </ng-container>
+
+    <!-- cantidad Column -->
+    <ng-container matColumnDef="cantidad">
+      <mat-header-cell *matHeaderCellDef> Cantidad </mat-header-cell>
+      <mat-cell *matCellDef="let product"> {{product.cantidad}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    
+    <mat-row (click)="detailProduct(data)" *matRowDef="let data; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <div class="main-div" *ngIf="!loadData">
+    <mat-spinner class="app-center"></mat-spinner>
+  </div>
+</div>

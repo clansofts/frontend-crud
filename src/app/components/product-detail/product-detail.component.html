@@ -1,0 +1,44 @@
+<form class="example-form" #productForm="ngForm">
+
+  <mat-form-field class="example-full-width">
+    <input matInput 
+           placeholder="Nombre"
+           [(ngModel)]="product.nombre"
+           name="nombre">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+      <input matInput
+             placeholder="Descripcion"
+             [(ngModel)]="product.descripcion"
+             name="descripcion">
+  </mat-form-field>
+
+  <section class="example-section">
+    <mat-checkbox [(ngModel)]="product.estado"
+                  name="estado">Estado</mat-checkbox>
+  </section>
+
+  <mat-form-field>
+      <input matInput
+             placeholder="Cantidad"
+             [(ngModel)]="product.cantidad"
+             type="number"
+             name="cantidad">
+    </mat-form-field>
+</form>
+
+
+<mat-dialog-actions>
+    <button mat-button
+    [mat-dialog-close]="false"
+    color="accent"
+    (click)="updateProduct()"
+    >Guardar</button>
+
+    <button mat-button
+    [mat-dialog-close]="product.id"
+    color="warn"
+    (click)="deleteProduct()"
+    >Eliminar</button>
+</mat-dialog-actions>

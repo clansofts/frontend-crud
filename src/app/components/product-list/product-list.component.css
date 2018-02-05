@@ -1,0 +1,19 @@
+.app-add-button {
+    font-size: 3em;
+}
+
+.app-spacer {
+    flex: 1 1 auto;
+}
+
+.app-center {
+    width: 75%;
+    margin: 10px auto;
+}
+
+.main-div{
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
